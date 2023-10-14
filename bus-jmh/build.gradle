@@ -40,13 +40,14 @@ tasks.register('jmh', JavaExec).configure {
     classpath = files(configurations.jmhOnly.asPath)
     mainClass = 'org.openjdk.jmh.Main'
     args    '-bm', 'avgt'  // benchmark mode
-    args    '-r', '5s' // iteration time
+    args    '-r', '2s' // iteration time
     args    '-w', '5s' // warmup time
     args    '-wi', '3' // warmup iterations
     args    '-prof', 'stack' // profilers
     args    '-tu', 'ns' // time unit
     args    '-f', '3' // forks
-    args    '-rff', project.file("${rootProject.buildDir}/jmh_results.txt")  // results file
+    args    '-rf', 'json'
+    args    '-rff', project.file("${rootProject.buildDir}/jmh_results.json")  // results file
     args    'net.neoforged.bus.benchmarks.FewListenersBenchmark'
     args    'net.neoforged.bus.benchmarks.ManyListenersBenchmark'
 }

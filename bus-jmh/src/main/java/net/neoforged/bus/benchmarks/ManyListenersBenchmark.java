@@ -20,10 +20,54 @@ public class ManyListenersBenchmark {
         int y = 0;
     }
 
-    public static class Listeners {
+    public static class Listeners0 {
         private final int lookingFor;
 
-        public Listeners(int lookingFor) {
+        public Listeners0(int lookingFor) {
+            this.lookingFor = lookingFor;
+        }
+
+        @SubscribeEvent
+        public void onEvent(TestEvent evt) {
+            if (evt.x == lookingFor) {
+                evt.y++;
+            }
+        }
+
+        @SubscribeEvent
+        public void onEvent(TestCancellableEvent evt) {
+            if (evt.x == lookingFor) {
+                evt.y++;
+            }
+        }
+    }
+
+    public static class Listeners1 {
+        private final int lookingFor;
+
+        public Listeners1(int lookingFor) {
+            this.lookingFor = lookingFor;
+        }
+
+        @SubscribeEvent
+        public void onEvent(TestEvent evt) {
+            if (evt.x == lookingFor) {
+                evt.y++;
+            }
+        }
+
+        @SubscribeEvent
+        public void onEvent(TestCancellableEvent evt) {
+            if (evt.x == lookingFor) {
+                evt.y++;
+            }
+        }
+    }
+
+    public static class Listeners2 {
+        private final int lookingFor;
+
+        public Listeners2(int lookingFor) {
             this.lookingFor = lookingFor;
         }
 
@@ -46,7 +90,12 @@ public class ManyListenersBenchmark {
     public void setup() {
         for (int i = 0; i < 10; ++i) {
             for (int j = 0; j < 10; ++j) {
-                BUS.register(new Listeners(j));
+                BUS.register(switch (j % 3) {
+                    case 0 -> new Listeners0(j);
+                    case 1 -> new Listeners1(j);
+                    case 2 -> new Listeners2(j);
+                    default -> throw new ArithmeticException("Impossible!");
+                });
             }
         }
     }
