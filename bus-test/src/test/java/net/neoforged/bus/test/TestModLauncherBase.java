@@ -16,7 +16,7 @@ public class TestModLauncherBase {
     private static TransformingClassLoader classLoader;
 
     BusBuilder builder() {
-        return BusBuilder.builder().useModLauncher();
+        return BusBuilder.builder();
     }
 
     @BeforeAll

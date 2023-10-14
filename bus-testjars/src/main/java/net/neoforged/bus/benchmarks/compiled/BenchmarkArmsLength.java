@@ -27,10 +27,10 @@ public class BenchmarkArmsLength
     public static Runnable supplier() {
         return () -> {
             ModLauncher = new Bus(
-                BusBuilder.builder().useModLauncher().build(),
-                BusBuilder.builder().useModLauncher().build(),
-                BusBuilder.builder().useModLauncher().build(),
-                BusBuilder.builder().useModLauncher().build()
+                BusBuilder.builder().build(),
+                BusBuilder.builder().build(),
+                BusBuilder.builder().build(),
+                BusBuilder.builder().build()
             ).register();
             ClassLoader = new Bus(
                 BusBuilder.builder().build(),

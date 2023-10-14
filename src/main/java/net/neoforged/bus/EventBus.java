@@ -66,7 +66,7 @@ public class EventBus implements IEventExceptionHandler, IEventBus {
     public EventBus(final BusBuilderImpl busBuilder) {
         this(busBuilder.exceptionHandler, busBuilder.startShutdown,
              busBuilder.classChecker, busBuilder.checkTypesOnDispatch,
-             busBuilder.modLauncher ? new ModLauncherFactory() : new ClassLoaderFactory());
+             new ClassLoaderFactory());
     }
 
     private void registerClass(final Class<?> clazz) {

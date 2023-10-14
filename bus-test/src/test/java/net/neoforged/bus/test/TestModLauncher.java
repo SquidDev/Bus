@@ -113,7 +113,7 @@ public class TestModLauncher extends TestModLauncherBase {
 
     @Test
     public void testNonPublicEventHandler() {
-        doTest(new NonPublicEventHandler(true) {});
+        doTest(new NonPublicEventHandler() {});
     }
 
 }

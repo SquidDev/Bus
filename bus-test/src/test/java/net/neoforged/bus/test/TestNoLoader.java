@@ -117,9 +117,8 @@ public class TestNoLoader extends TestNoLoaderBase {
         doTest(new GenericListenerTests.Wildcard() {});
     }
 
-    @Disabled //TODO: Do we want to add checks for this? By Default the methods just silent are ignored.
     @Test
     public void testNonPublicEventHandler() {
-        doTest(new NonPublicEventHandler(false) {});
+        doTest(new NonPublicEventHandler() {});
     }
 }
