@@ -14,7 +14,7 @@ import java.util.function.Predicate;
 /**
  * Wraps a consumer to be used as an event handler, and overrides {@link #toString()} for better debugging.
  */
-public class ConsumerEventHandler extends EventListener {
+class ConsumerEventHandler extends AbstractEventListenerImpl {
     protected final Consumer<Event> consumer;
 
     public ConsumerEventHandler(Consumer<Event> consumer) {

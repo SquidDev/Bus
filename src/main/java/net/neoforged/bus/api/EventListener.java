@@ -19,11 +19,12 @@
 
 package net.neoforged.bus.api;
 
+import net.neoforged.bus.AbstractEventListenerImpl;
 
 /**
  * Event listeners are wrapped with implementations of this class.
  */
-public abstract class EventListener
+public sealed abstract class EventListener permits AbstractEventListenerImpl
 {
     public abstract void invoke(Event event);
 }
